@@ -513,14 +513,16 @@ jobs:
 
 **If this table is empty:** N/A — see entries above; all are low-to-medium risk and each is self-revealing (a failed install, a failed CI run, or a failing/misbehaving first axe test) rather than a silent correctness gap.
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **Does `@chialab/vitest-axe` produce correct results against Vitest 5's jsdom integration, beyond just installing?**
+> Both questions were resolved empirically by the planner on 2026-09-26, using a scratch install of the exact pinned set (plus `@eslint/js` 10.0.1, `axe-core` 4.13.0 and `@testing-library/dom` 10.4.2), outside the repo.
+
+1. **Does `@chialab/vitest-axe` produce correct results against Vitest 5's jsdom integration, beyond just installing?** RESOLVED: yes. Under vitest 5.0.2 + jsdom 30.1.1, `expect(await run(container)).toHaveNoViolations()` passed on clean markup. On an `<img>` without `alt`, it reported `image-alt` and `expect(results).not.toHaveNoViolations()` passed, so the matcher can both pass and fail. `tsc -b` typechecks with `types: ["vite/client", "vitest/globals", "@chialab/vitest-axe/matchers"]`. Note that `axe-core` is a *peer* dependency of the wrapper, and tests import `run` from it directly, so it must be an explicit devDependency. Plan 01-01 keeps a canary test (pass + fail) as the permanent guard.
    - What we know: peer-dep override makes `npm install` succeed; the underlying `axe-core` dependency itself is version-pinned at `^4.0.0` and installs fine independent of the vitest-axe wrapper.
    - What's unclear: whether the wrapper's internal Vitest API usage (e.g., `expect.extend` typing, matcher context) has any Vitest-5-specific breakage not caught by a peer-dep check.
    - Recommendation: Wave 0 should include one trivial `toHaveNoViolations()` test on a minimal rendered element as an early canary, before building out the full component test suite on top of it.
 
-2. **Exact flat-config export names/shapes for `eslint-plugin-jsx-a11y` and `eslint-plugin-react-hooks` at their currently-installed versions (6.10.2 / 7.1.1).**
+2. **Exact flat-config export names/shapes for `eslint-plugin-jsx-a11y` and `eslint-plugin-react-hooks` at their currently-installed versions (6.10.2 / 7.1.1).** RESOLVED. ESLint 10.11.0 loaded and ran this composition successfully: `defineConfig`/`globalIgnores` from `eslint/config`, `js.configs.recommended` (`@eslint/js` must be installed explicitly, because ESLint 10 no longer depends on it), `tseslint.configs.recommended`, `jsxA11y.flatConfigs.recommended` (confirmed), `reactHooks.configs.flat.recommended` (7.1.1 puts the flat preset under `configs.flat`; the top-level `configs['recommended-latest']` guess below is superseded), `reactRefresh.configs.vite` (an **object** in 0.5.7; calling it as a function throws `TypeError`), and `eslint-config-prettier/flat`. Two more corrections: `actions/checkout` and `actions/setup-node` are at major **v7** (per `git ls-remote --tags`), not v4 (A3), and `create-vite` 9.2.1 names its lint config `.oxlintrc.json`, not `_oxlintrc.json`.
    - What we know: `jsxA11y.flatConfigs.recommended` and `reactHooks.configs['recommended-latest']` are the documented shapes as of the versions found in web search results this session.
    - What's unclear: these were not confirmed by reading each package's actual shipped `dist`/README at the exact pinned version (no Context7/docs MCP was available this session, all sourced via WebSearch on the general topic).
    - Recommendation: the planner/executor should treat the ESLint config skeleton in Code Examples as a structural starting point and verify the exact export name against `node_modules/eslint-plugin-jsx-a11y/README.md` (or its TS types) once actually installed, adjusting names if the installed version differs from what web search described.

@@ -28,6 +28,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 ## Phase Details
 
 ### Phase 1: Two-Player Game
+
 **Goal**: As a player sharing a device, I want to play full games with correct wins and draws, so that a friend and I can compete.
 **Mode:** mvp
 **Depends on**: Nothing (first phase)
@@ -38,10 +39,26 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. "New round" clears the board so play starts again without reloading the page.
   4. With a screen reader, each cell reads its position and contents (e.g. "Row 1, column 2, X"). Turn changes and results are each announced once through a single polite status region. Cells are native buttons reachable by Tab.
   5. `npm test` passes the engine unit tests (all 8 win lines, draw, win on the final move, and moves on occupied cells or after game over) and the component tests with zero axe violations. A GitHub Actions run on push shows lint, typecheck, and tests all passing.
-**Plans**: TBD
+
+**Plans:** 4 plans
+
+Plans:
+**Wave 1**
+- [ ] 01-01-PLAN.md — Walking skeleton: scaffold (with package-legitimacy gate), pure engine core, taking alternating turns on an accessible native-button board, one polite status region, tests + axe canary, lint/typecheck/format, GitHub Actions CI
+
+**Wave 2** *(blocked on Wave 1 completion)*
+- [ ] 01-02-PLAN.md — Games end correctly: evaluate() win-then-draw (including a 9th-move win), the result in the same status region, the board locks; full engine test matrix
+
+**Wave 3** *(blocked on Wave 2 completion)*
+- [ ] 01-03-PLAN.md — Play again: an always-enabled New round button; focus goes to New round at game end with the result as its description, then back to Row 1, column 1
+
+**Wave 4** *(blocked on Wave 3 completion)*
+- [ ] 01-04-PLAN.md — See the winning line: a strike line for all 8 orientations (forced-colors/grayscale safe) and ", winning" cell labels
+
 **UI hint**: yes
 
 ### Phase 2: Play the Computer
+
 **Goal**: As a solo player, I want to play the computer at a difficulty I choose, so that I can enjoy a game at my own level anytime.
 **Mode:** mvp
 **Depends on**: Phase 1
@@ -51,10 +68,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. Easy plays a random legal move. Medium takes an immediate win if one exists, otherwise blocks the user's immediate win, otherwise plays randomly. Unit tests on specific board positions check both behaviors.
   3. On Hard the user can never win; the best they can get is a draw, whether the computer moves first or second. An automated test that plays out every possible human move sequence, in both turn orders, proves this.
   4. After the user moves, "Computer is thinking…" is shown and announced, and the computer moves after a short delay. Board input is ignored during the delay, so rapid clicking never gives anyone two moves in a row. Starting a new round mid-think never lets the old computer move land on the new board.
+
 **Plans**: TBD
 **UI hint**: yes
 
 ### Phase 3: Names & Saved Scoreboard
+
 **Goal**: As a returning player, I want to keep our names and score tally across refreshes, so that our rivalry carries on.
 **Mode:** mvp
 **Depends on**: Phase 2
@@ -64,10 +83,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. A scoreboard shows wins for each player and draws for the current matchup, and updates when each round ends. "New round" leaves it unchanged. A separate "Reset scores" control, distinct from New round, sets the tally to zero.
   3. After a page refresh, names and scores are exactly as they were until the user resets them.
   4. The app still loads with default names and zero scores, and stays fully playable, if saved data is missing, malformed (e.g. hand-edited in devtools), the wrong shape, or storage is blocked entirely. Unit tests cover each of these cases.
+
 **Plans**: TBD
 **UI hint**: yes
 
 ### Phase 4: Playful Look & Feel
+
 **Goal**: As a player, I want to play on a colorful and lively board that celebrates wins, so that the game feels fun.
 **Mode:** mvp
 **Depends on**: Phase 3
@@ -77,10 +98,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. Cells have clear hover and keyboard-focus states, marks animate in when placed, and a win plays a celebration on the winning line.
   3. All text and UI elements meet WCAG AA contrast. The winning line, the current turn, and X versus O stay distinguishable in grayscale or colorblind simulation and in OS forced-colors (high-contrast) mode.
   4. With OS reduced-motion turned on, decorative motion is removed or minimized, but placed marks, the winning-line highlight, and the result text still appear immediately, so no information is lost.
+
 **Plans**: TBD
 **UI hint**: yes
 
 ### Phase 5: Accessible, Portfolio-Ready Release
+
 **Goal**: As a portfolio reviewer, I want to run, test, and keyboard-play the finished game, so that I can judge its quality.
 **Mode:** mvp
 **Depends on**: Phase 4
@@ -89,6 +112,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   1. Using only the keyboard, a player can set up a game (mode, first player, difficulty, and names), play it to a result, start a new round, and reset scores. A visible focus indicator shows at every step, and focus is never lost when the board clears or the result appears.
   2. A manual pass with a real screen reader (NVDA or VoiceOver) through a full vs-computer game confirms that cell labels, turn changes, "Computer is thinking…", and results are each announced once and concisely. No composite ARIA role (such as `role="grid"`) is present.
   3. Someone new to the repo can follow the README to install, run the dev server, and run the tests. The README covers what the game is, how to run and test it, and design notes (engine/UI/persistence layering, the minimax approach, and accessibility decisions), and includes a screenshot of the finished, styled UI.
+
 **Plans**: TBD
 **UI hint**: yes
 
@@ -99,7 +123,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Two-Player Game | 0/TBD | Not started | - |
+| 1. Two-Player Game | 0/4 | Not started | - |
 | 2. Play the Computer | 0/TBD | Not started | - |
 | 3. Names & Saved Scoreboard | 0/TBD | Not started | - |
 | 4. Playful Look & Feel | 0/TBD | Not started | - |

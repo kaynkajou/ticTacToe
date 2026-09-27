@@ -40,23 +40,26 @@ created: "2026-09-26"
 
 | Task ID | Plan | Wave | Requirement | Threat Ref | Secure Behavior | Test Type | Automated Command | File Exists | Status |
 |---------|------|------|-------------|------------|-----------------|-----------|-------------------|-------------|--------|
-| TBD | TBD | TBD | GAME-01 | — | N/A | unit | `npx vitest run src/engine/engine.test.ts -t "occupied"` | ❌ W0 | ⬜ pending |
-| TBD | TBD | TBD | GAME-02 | — | N/A | unit | `npx vitest run src/engine/engine.test.ts -t "current player"` | ❌ W0 | ⬜ pending |
-| TBD | TBD | TBD | GAME-03 | — | N/A | unit | `npx vitest run src/engine/engine.test.ts -t "win"` | ❌ W0 | ⬜ pending |
-| TBD | TBD | TBD | GAME-04 | — | N/A | unit | `npx vitest run src/engine/engine.test.ts -t "draw"` | ❌ W0 | ⬜ pending |
-| TBD | TBD | TBD | GAME-05 | — | N/A | component | `npx vitest run src/ui/Board.test.tsx -t "locks"` | ❌ W0 | ⬜ pending |
-| TBD | TBD | TBD | GAME-06 | — | N/A | component | `npx vitest run src/ui/Cell.test.tsx -t "winning"` | ❌ W0 | ⬜ pending |
-| TBD | TBD | TBD | GAME-07 | — | N/A | component | `npx vitest run src/ui/App.test.tsx -t "new round"` | ❌ W0 | ⬜ pending |
-| TBD | TBD | TBD | A11Y-02 | — | N/A | component | `npx vitest run src/ui/Cell.test.tsx -t "label"` | ❌ W0 | ⬜ pending |
-| TBD | TBD | TBD | A11Y-03 | — | N/A | component | `npx vitest run src/ui/App.test.tsx -t "aria-live"` | ❌ W0 | ⬜ pending |
-| TBD | TBD | TBD | QUAL-03 | — | N/A | component (axe) | `npx vitest run src/ui/App.test.tsx -t "axe"` | ❌ W0 | ⬜ pending |
-| TBD | TBD | TBD | QUAL-04 | — | N/A | CI | `.github/workflows/ci.yml` on push | ❌ W0 | ⬜ pending |
+| 01-01-01 | 01 | 1 | (all installs) | T-1-SC | Only human-verified, exact-pinned packages are installed | checkpoint (blocking-human) | n/a (package legitimacy gate) | n/a | ⬜ pending |
+| 01-01-02 | 01 | 1 | GAME-01, GAME-02, A11Y-02, A11Y-03, QUAL-03 | T-1-03, T-1-04, T-1-06 | Engine rejects out-of-range/occupied index; text rendered as React text; axe matcher proven to fail on a known violation | component + unit + axe canary | `npx vitest run src/App.test.tsx src/test/axe-canary.test.ts src/game/status.test.ts src/ui/cellLabel.test.ts` | ❌ created by this task | ⬜ pending |
+| 01-01-03 | 01 | 1 | QUAL-04 | T-1-01, T-1-02, T-1-05 | CI read-only token, first-party actions only, no network/storage code | lint/typecheck/format/CI | `npm run lint && npm run typecheck && npm run format:check && npm test` | ❌ created by this task | ⬜ pending |
+| 01-02-01 | 02 | 2 | GAME-03, GAME-05 | T-1-07 | Moves after a result refused | component (tracer) | `npx vitest run src/App.gameOver.test.tsx src/App.test.tsx` | ❌ created by this task | ⬜ pending |
+| 01-02-02 | 02 | 2 | QUAL-01, GAME-01, GAME-02, GAME-03, GAME-04 | T-1-03, T-1-07 | applyMove throws IllegalMoveError (out-of-range / game-over / occupied) | unit (TDD) | `npx vitest run src/engine/engine.test.ts` | ❌ created by this task | ⬜ pending |
+| 01-02-03 | 02 | 2 | GAME-04, GAME-05, A11Y-03, QUAL-03 | — | N/A | component + axe | `npx vitest run src/App.gameOver.test.tsx` | ❌ created by 01-02-01 | ⬜ pending |
+| 01-03-01 | 03 | 3 | GAME-07 | T-1-08 | New round rebuilds from emptyBoard; no stale result | component (tracer) | `npx vitest run src/App.newRound.test.tsx src/App.test.tsx src/App.gameOver.test.tsx` | ❌ created by this task | ⬜ pending |
+| 01-03-02 | 03 | 3 | GAME-07, GAME-05, A11Y-03, QUAL-03 | T-1-08 | N/A | component + unit + axe | `npx vitest run src/App.newRound.test.tsx src/game/gameReducer.test.ts` | ❌ created by this task | ⬜ pending |
+| 01-04-01 | 04 | 4 | GAME-06, A11Y-02 | T-1-09 | Cue derived only from engine winningLine | component (tracer) + axe | `npx vitest run src/App.winningLine.test.tsx src/App.gameOver.test.tsx src/App.newRound.test.tsx` | ❌ created by this task | ⬜ pending |
+| 01-04-02 | 04 | 4 | GAME-06, A11Y-02, QUAL-03 | T-1-09 | N/A | component (8 orientations) | `npx vitest run src/ui/Board.test.tsx src/App.winningLine.test.tsx` | ❌ created by this task | ⬜ pending |
 
-*Task IDs are filled in once PLAN.md files exist. Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
+*Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
+
+**Planner note (2026-09-26):** An empirical check found that Vitest exits 0 when a `-t "<name>"` filter matches no tests: every test is reported as skipped and the run still counts as green. The original `-t` commands in this table could therefore pass without running anything. All automated commands above run whole test files instead. Each plan's acceptance criteria use `grep -c "<exact test name>"` to prove the named tests exist. Test file layout per plan: `src/App.test.tsx` (turns), `src/App.gameOver.test.tsx` (results), `src/App.newRound.test.tsx` (New round/focus), `src/App.winningLine.test.tsx` + `src/ui/Board.test.tsx` (winning line), `src/engine/engine.test.ts` (rule matrix), `src/game/gameReducer.test.ts`, `src/game/status.test.ts`, `src/ui/cellLabel.test.ts`, `src/test/axe-canary.test.ts`.
 
 ---
 
 ## Wave 0 Requirements
+
+*This phase is greenfield, so plan 01-01's tracer task (01-01-02) is the Wave 0: it creates the test infrastructure and the first test files in the same task. Planner additions to the install set: `@eslint/js` 10.0.1 (ESLint 10 no longer bundles it), `axe-core` 4.13.0 (a peer of @chialab/vitest-axe that tests import directly), and `@testing-library/dom` 10.4.2 (a peer of RTL 16). The planner verified this set with a dry run (349 packages, 0 errors) plus a real scratch install that ran the axe canary green under Vitest 5.*
 
 - [ ] `package.json` `overrides` block — required before the first `npm install` (jsx-a11y ↔ ESLint 10, vitest-axe ↔ Vitest 5 peer conflicts)
 - [ ] `vitest.config.ts` — framework config, jsdom environment
