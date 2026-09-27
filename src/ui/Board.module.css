@@ -4,4 +4,45 @@
   grid-template-columns: repeat(3, var(--cell-size));
   gap: var(--board-gap);
   width: max-content;
+  /* Cell-center offsets from the board's top/left edge, used by .strike
+     below to pass through the centers of the winning cells regardless of
+     --cell-size or --board-gap. */
+  --board-size: calc(var(--cell-size) * 3 + var(--board-gap) * 2);
+  --c1: calc(var(--cell-size) / 2);
+  --c2: calc(var(--cell-size) * 1.5 + var(--board-gap));
+  --c3: calc(var(--cell-size) * 2.5 + var(--board-gap) * 2);
+}
+
+/*
+ * The winning-line strike (D-01). Static only -- no keyframes, transition,
+ * or repeating effect (WCAG 2.3.1 seizure safety; Phase 4 owns motion).
+ * aria-hidden and pointer-events: none, since it is purely decorative --
+ * the ", winning" cell labels carry the meaning for assistive tech.
+ */
+.strike {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  background: var(--color-strike);
+  border-radius: calc(var(--strike-thickness) / 2);
+}
+
+.strike[data-line='row-1'],
+.strike[data-line='row-2'],
+.strike[data-line='row-3'] {
+  left: calc(var(--cell-size) * 0.1);
+  right: calc(var(--cell-size) * 0.1);
+  height: var(--strike-thickness);
+}
+
+.strike[data-line='row-1'] {
+  top: calc(var(--c1) - var(--strike-thickness) / 2);
+}
+
+.strike[data-line='row-2'] {
+  top: calc(var(--c2) - var(--strike-thickness) / 2);
+}
+
+.strike[data-line='row-3'] {
+  top: calc(var(--c3) - var(--strike-thickness) / 2);
 }

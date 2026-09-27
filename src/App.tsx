@@ -7,6 +7,7 @@ import styles from './App.module.css';
 export function App() {
   const {
     board,
+    result,
     status,
     isCellPlayable,
     playCell,
@@ -23,6 +24,7 @@ export function App() {
         board={board}
         isCellPlayable={isCellPlayable}
         onPlay={playCell}
+        winningLine={result.status === 'win' ? result.winningLine : null}
         firstCellRef={firstCellRef}
       />
       <NewRoundButton onClick={newRound} ref={newRoundRef} />
