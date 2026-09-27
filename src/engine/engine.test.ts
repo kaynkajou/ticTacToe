@@ -145,12 +145,22 @@ describe('currentPlayer', () => {
   it('derives the current player from the board', () => {
     expect(currentPlayer(emptyBoard())).toBe('X');
 
+    // A move order that fills the whole board while it stays a draw
+    // throughout (final board 'XOX XOO OXX' has no winning line, so no
+    // prefix of it can complete one either), so all 9 moves apply cleanly
+    // and alternation can be observed across the full game.
+    const drawOrder = [0, 1, 2, 4, 3, 5, 7, 6, 8];
     let board: Board = emptyBoard();
     const expectedTurns: Mark[] = ['X', 'O', 'X', 'O', 'X', 'O', 'X', 'O', 'X'];
-    for (let index = 0; index < 9; index += 1) {
-      expect(currentPlayer(board)).toBe(expectedTurns[index]);
+    for (let move = 0; move < drawOrder.length; move += 1) {
+      expect(currentPlayer(board)).toBe(expectedTurns[move]);
+      const index = drawOrder[move];
+      if (index === undefined) {
+        throw new Error('expected drawOrder to have 9 entries');
+      }
       board = applyMove(board, index, currentPlayer(board));
     }
+    expect(evaluate(board)).toEqual({ status: 'draw' });
 
     expect(currentPlayer(emptyBoard(), 'O')).toBe('O');
   });

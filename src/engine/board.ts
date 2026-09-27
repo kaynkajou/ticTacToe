@@ -3,7 +3,7 @@ import { evaluate } from './rules';
 
 export const BOARD_SIZE = 9;
 
-export type IllegalMoveReason = 'out-of-range' | 'occupied'; // plan 01-02 adds 'game-over'
+export type IllegalMoveReason = 'out-of-range' | 'game-over' | 'occupied';
 
 export class IllegalMoveError extends Error {
   readonly reason: IllegalMoveReason;
@@ -34,6 +34,9 @@ export function isLegalMove(board: Board, index: number): boolean {
 export function applyMove(board: Board, index: number, mark: Mark): Board {
   if (!Number.isInteger(index) || index < 0 || index >= BOARD_SIZE) {
     throw new IllegalMoveError('out-of-range', index);
+  }
+  if (evaluate(board).status !== 'in-progress') {
+    throw new IllegalMoveError('game-over', index);
   }
   if (board[index] !== null) {
     throw new IllegalMoveError('occupied', index);
