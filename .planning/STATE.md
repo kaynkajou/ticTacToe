@@ -3,16 +3,16 @@ gsd_state_version: "1.0"
 current_phase: 01
 current_phase_name: Two-Player Game
 status: executing
-stopped_at: Completed 01-01-PLAN.md
-last_updated: "2026-09-27T17:25:34.291Z"
+stopped_at: Completed 01-02-PLAN.md
+last_updated: "2026-09-27T17:56:23.446Z"
 last_activity: 2026-09-26
 last_activity_desc: Phase 01 execution started
-state_head: 4bb7c5488d18024cf1517fd1a858d5ce46759bf9
+state_head: 17a5561c6703d58598a46aac0c80a5e28111243b
 progress:
   total_phases: 5
   completed_phases: 0
   total_plans: 4
-  completed_plans: 1
+  completed_plans: 2
   percent: 0
 ---
 
@@ -28,7 +28,7 @@ See: .planning/PROJECT.md (updated 2026-09-26)
 ## Current Position
 
 Phase: 01 (Two-Player Game) — EXECUTING
-Plan: 2 of 4
+Plan: 3 of 4
 Status: Ready to execute
 Last activity: 2026-09-26 — Phase 01 execution started
 
@@ -57,6 +57,7 @@ Progress: [░░░░░░░░░░] 0%
 | Plan | Duration | Tasks | Files |
 |------|----------|-------|-------|
 | Phase 01 P01 | 62min | 3 tasks | 35 files |
+| Phase 01 P02 | 62min | 3 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -71,6 +72,8 @@ Recent decisions affecting current work:
 - [Phase 01]: Scaffolded via create-vite into a scratch temp dir, then hand-copied only the plan-named files into the repo root (never pointed create-vite at the repo root).
 - [Phase 01]: Kept vite pinned at 8.0.9 despite a high-severity, Windows-specific npm audit finding fixed only in 8.3.1+, to preserve the plan's exact-pin acceptance criteria; tracked in .planning/WINDOWS.md for follow-up.
 - [Phase 01]: Added .gsd/ to .prettierignore after npm run format reformatted the orchestrator's sentinel file; content was semantically unchanged and never staged.
+- [Phase 01]: evaluate() narrows each line's first cell with a truthy check rather than !== null, to satisfy noUncheckedIndexedAccess (Mark | null | undefined) in one branch
+- [Phase 01]: applyMove checks out-of-range, then game-over, then occupied, in that order (plan-mandated), and shares a private isInRange() helper with isLegalMove after the REFACTOR step
 
 ### Pending Todos
 
@@ -92,6 +95,6 @@ Items acknowledged and deferred at milestone close, most recent first:
 
 ## Session Continuity
 
-Last session: 2026-09-27T17:25:34.258Z
-Stopped at: Completed 01-01-PLAN.md
+Last session: 2026-09-27T17:56:23.424Z
+Stopped at: Completed 01-02-PLAN.md
 Resume file: None
