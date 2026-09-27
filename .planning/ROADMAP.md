@@ -40,7 +40,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   4. With a screen reader, each cell reads its position and contents (e.g. "Row 1, column 2, X"). Turn changes and results are each announced once through a single polite status region. Cells are native buttons reachable by Tab.
   5. `npm test` passes the engine unit tests (all 8 win lines, draw, win on the final move, and moves on occupied cells or after game over) and the component tests with zero axe violations. A GitHub Actions run on push shows lint, typecheck, and tests all passing.
 
-**Plans:** 2/4 plans executed
+**Plans:** 3/4 plans executed
 
 Plans:
 **Wave 1**
@@ -50,7 +50,7 @@ Plans:
 - [x] 01-02-PLAN.md — Games end correctly: evaluate() win-then-draw (including a 9th-move win), the result in the same status region, the board locks; full engine test matrix
 
 **Wave 3** *(blocked on Wave 2 completion)*
-- [ ] 01-03-PLAN.md — Play again: an always-enabled New round button; focus goes to New round at game end with the result as its description, then back to Row 1, column 1
+- [x] 01-03-PLAN.md — Play again: an always-enabled New round button; focus goes to New round at game end with the result as its description, then back to Row 1, column 1
 
 **Wave 4** *(blocked on Wave 3 completion)*
 - [ ] 01-04-PLAN.md — See the winning line: a strike line for all 8 orientations (forced-colors/grayscale safe) and ", winning" cell labels
@@ -123,7 +123,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Two-Player Game | 2/4 | In Progress|  |
+| 1. Two-Player Game | 3/4 | In Progress|  |
 | 2. Play the Computer | 0/TBD | Not started | - |
 | 3. Names & Saved Scoreboard | 0/TBD | Not started | - |
 | 4. Playful Look & Feel | 0/TBD | Not started | - |
