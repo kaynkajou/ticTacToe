@@ -91,12 +91,45 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
+| GAME-01 | Phase 1 | Pending |
+| GAME-02 | Phase 1 | Pending |
+| GAME-03 | Phase 1 | Pending |
+| GAME-04 | Phase 1 | Pending |
+| GAME-05 | Phase 1 | Pending |
+| GAME-06 | Phase 1 | Pending |
+| GAME-07 | Phase 1 | Pending |
+| MODE-01 | Phase 2 | Pending |
+| MODE-02 | Phase 2 | Pending |
+| MODE-03 | Phase 2 | Pending |
+| AI-01 | Phase 2 | Pending |
+| AI-02 | Phase 2 | Pending |
+| AI-03 | Phase 2 | Pending |
+| AI-04 | Phase 2 | Pending |
+| AI-05 | Phase 2 | Pending |
+| PLYR-01 | Phase 3 | Pending |
+| PLYR-02 | Phase 3 | Pending |
+| PLYR-03 | Phase 3 | Pending |
+| PLYR-04 | Phase 3 | Pending |
+| PLYR-05 | Phase 3 | Pending |
+| UI-01 | Phase 4 | Pending |
+| UI-02 | Phase 4 | Pending |
+| UI-03 | Phase 4 | Pending |
+| A11Y-01 | Phase 5 | Pending |
+| A11Y-02 | Phase 1 | Pending |
+| A11Y-03 | Phase 1 | Pending |
+| A11Y-04 | Phase 4 | Pending |
+| A11Y-05 | Phase 4 | Pending |
+| QUAL-01 | Phase 1 | Pending |
+| QUAL-02 | Phase 2 | Pending |
+| QUAL-03 | Phase 1 | Pending |
+| QUAL-04 | Phase 1 | Pending |
+| QUAL-05 | Phase 5 | Pending |
 
 **Coverage:**
 - v1 requirements: 33 total
-- Mapped to phases: 0
-- Unmapped: 33 ⚠️
+- Mapped to phases: 33
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-09-26*
-*Last updated: 2026-09-26 after initial definition*
+*Last updated: 2026-09-26 after roadmap creation (traceability mapped)*
