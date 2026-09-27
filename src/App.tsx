@@ -5,8 +5,15 @@ import { useGame } from './game/useGame';
 import styles from './App.module.css';
 
 export function App() {
-  const { board, status, isCellPlayable, playCell, newRound, firstCellRef } =
-    useGame();
+  const {
+    board,
+    status,
+    isCellPlayable,
+    playCell,
+    newRound,
+    firstCellRef,
+    newRoundRef,
+  } = useGame();
 
   return (
     <main className={styles.app}>
@@ -18,7 +25,7 @@ export function App() {
         onPlay={playCell}
         firstCellRef={firstCellRef}
       />
-      <NewRoundButton onClick={newRound} />
+      <NewRoundButton onClick={newRound} ref={newRoundRef} />
     </main>
   );
 }
