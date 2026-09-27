@@ -21,18 +21,20 @@ export function emptyBoard(): Board {
   return new Array<Cell>(BOARD_SIZE).fill(null);
 }
 
+function isInRange(index: number): boolean {
+  return Number.isInteger(index) && index >= 0 && index < BOARD_SIZE;
+}
+
 export function isLegalMove(board: Board, index: number): boolean {
   return (
-    Number.isInteger(index) &&
-    index >= 0 &&
-    index < BOARD_SIZE &&
+    isInRange(index) &&
     board[index] === null &&
     evaluate(board).status === 'in-progress'
   );
 }
 
 export function applyMove(board: Board, index: number, mark: Mark): Board {
-  if (!Number.isInteger(index) || index < 0 || index >= BOARD_SIZE) {
+  if (!isInRange(index)) {
     throw new IllegalMoveError('out-of-range', index);
   }
   if (evaluate(board).status !== 'in-progress') {
