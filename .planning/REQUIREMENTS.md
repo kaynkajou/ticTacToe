@@ -9,8 +9,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Core Game
 
-- [ ] **GAME-01**: User can place their mark in any empty cell of a 3×3 board; occupied cells cannot be played
-- [ ] **GAME-02**: Players alternate turns automatically and the current turn is always shown
+- [x] **GAME-01**: User can place their mark in any empty cell of a 3×3 board; occupied cells cannot be played
+- [x] **GAME-02**: Players alternate turns automatically and the current turn is always shown
 - [ ] **GAME-03**: Game detects a win on any of the 8 lines, including a win on the final (9th) move
 - [ ] **GAME-04**: Game detects a draw when the board is full with no winner
 - [ ] **GAME-05**: Result (win with player name, or draw) is announced and the board locks until a new round
@@ -58,7 +58,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **QUAL-01**: Automated unit tests cover game rules (all win lines, draw, win-on-final-move, invalid moves)
 - [ ] **QUAL-02**: Automated tests prove Hard never loses (exhaustive or large-sample, AI-first and human-first)
 - [ ] **QUAL-03**: Component tests plus automated accessibility (axe) checks on the rendered UI
-- [ ] **QUAL-04**: CI (GitHub Actions) runs lint, typecheck, and tests on every push
+- [x] **QUAL-04**: CI (GitHub Actions) runs lint, typecheck, and tests on every push
 - [ ] **QUAL-05**: README covers what it is, how to run, how to test, design notes, and a screenshot
 
 ## v2 Requirements
@@ -91,8 +91,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| GAME-01 | Phase 1 | Pending |
-| GAME-02 | Phase 1 | Pending |
+| GAME-01 | Phase 1 | Complete |
+| GAME-02 | Phase 1 | Complete |
 | GAME-03 | Phase 1 | Pending |
 | GAME-04 | Phase 1 | Pending |
 | GAME-05 | Phase 1 | Pending |
@@ -122,7 +122,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | QUAL-01 | Phase 1 | Pending |
 | QUAL-02 | Phase 2 | Pending |
 | QUAL-03 | Phase 1 | Pending |
-| QUAL-04 | Phase 1 | Pending |
+| QUAL-04 | Phase 1 | Complete |
 | QUAL-05 | Phase 5 | Pending |
 
 **Coverage:**
