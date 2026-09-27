@@ -61,7 +61,9 @@ A complete, fun game of tic-tac-toe — against a friend or the computer — tha
 | Persist names/scores in browser storage | User wants them to survive refresh; no backend needed | — Pending |
 | Playful & colorful visual style | User preference | — Pending |
 | Local only, no deployment in v1 | User choice; hosting can come later | — Pending |
-| Tech stack chosen via research | User deferred the choice | — Pending |
+| Stack: Vite + React 19 + TypeScript 6 + Vitest | Research recommendation, user chose React over vanilla; TS 6 not 7 (tooling compat) | — Pending |
+| Desktop-first; responsive/mobile deferred to v2 | User choice during requirements scoping | — Pending |
+| AI "thinking" delay + CI (GitHub Actions) in v1 | User opted into these stretch items | — Pending |
 
 ## Evolution
 
