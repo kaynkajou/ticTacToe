@@ -1,10 +1,10 @@
 ---
 schema_version: 1
-open_count: 4
+open_count: 5
 waived_count: 0
 fixed_count: 1
-total_count: 5
-last_updated: 2026-09-27T18:18:21.294Z
+total_count: 6
+last_updated: 2026-09-27T18:30:38.939Z
 ---
 
 # Broken Windows Ledger
@@ -20,6 +20,7 @@ last_updated: 2026-09-27T18:18:21.294Z
 | 3 | 01 | unrun-verify | .github/workflows/ci.yml |  | Task 3's human-check (first green GitHub Actions run for the pushed commit) has not been performed -- pushing requires the user's explicit go-ahead per CLAUDE.md. All CI steps pass locally (lint, typecheck, format:check, test, build); the workflow file's structure/order/permissions were verified by grep, but no real Actions run has confirmed it end-to-end. Deferred to end-of-phase UAT. | open |  | 2026-09-27T17:23:30.719Z |  |
 | 4 | 01 | unrun-verify | src/App.gameOver.test.tsx |  | Task 3's human-check (NVDA/Narrator screen-reader pass playing X's top-row win via keyboard only) has not been performed; jsdom cannot run a real screen reader. All automated checks (npm test, lint, typecheck) pass. Deferred to end-of-phase UAT per workflow.human_verify_mode=end-of-phase; Phase 5 owns the formal keyboard/screen-reader verification pass. | open |  | 2026-09-27T17:53:08.926Z |  |
 | 5 | 01 | unrun-verify | src/App.newRound.test.tsx |  | Task 2's human-check (real-browser keyboard-only playthrough: Tab/Enter/Space to a win, visible focus ring on New round, Enter, visible focus ring on the top-left cell, status reads X's turn) has not been performed; jsdom cannot verify focus-ring visibility. All automated checks (npm test, lint, typecheck, format:check, build) pass. Deferred to end-of-phase UAT per workflow.human_verify_mode=end-of-phase; Phase 5 owns the formal keyboard/screen-reader verification pass. | open |  | 2026-09-27T18:18:21.294Z |  |
+| 6 | 01 | unrun-verify | src/ui/Board.module.css |  | Task 2 human-check (forced-colors and achromatopsia/grayscale emulation in Chrome/Edge DevTools, winning on a row, column, and each diagonal) has not been performed; jsdom cannot render CSS forced-colors or vision-deficiency emulation. All automated checks (npm test, lint, typecheck, format:check, build) pass. Deferred to end-of-phase UAT per workflow.human_verify_mode=end-of-phase. | open |  | 2026-09-27T18:30:38.939Z |  |
 
 ````json
 [
@@ -85,6 +86,19 @@ last_updated: 2026-09-27T18:18:21.294Z
     "status": "open",
     "reason": "",
     "recorded_at": "2026-09-27T18:18:21.294Z",
+    "resolved_at": null,
+    "milestone": null
+  },
+  {
+    "id": 6,
+    "kind": "unrun-verify",
+    "phase": "01",
+    "file": "src/ui/Board.module.css",
+    "line": null,
+    "description": "Task 2 human-check (forced-colors and achromatopsia/grayscale emulation in Chrome/Edge DevTools, winning on a row, column, and each diagonal) has not been performed; jsdom cannot render CSS forced-colors or vision-deficiency emulation. All automated checks (npm test, lint, typecheck, format:check, build) pass. Deferred to end-of-phase UAT per workflow.human_verify_mode=end-of-phase.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-27T18:30:38.939Z",
     "resolved_at": null,
     "milestone": null
   }

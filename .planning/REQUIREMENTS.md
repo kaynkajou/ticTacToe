@@ -14,7 +14,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **GAME-03**: Game detects a win on any of the 8 lines, including a win on the final (9th) move
 - [x] **GAME-04**: Game detects a draw when the board is full with no winner
 - [x] **GAME-05**: Result (win with player name, or draw) is announced and the board locks until a new round
-- [ ] **GAME-06**: Winning three-in-a-row is visually highlighted (not by color alone)
+- [x] **GAME-06**: Winning three-in-a-row is visually highlighted (not by color alone)
 - [x] **GAME-07**: User can start a new round, which clears the board and keeps scores
 
 ### Game Modes
@@ -48,7 +48,7 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Accessibility
 
 - [ ] **A11Y-01**: Entire game (setup, moves, new round, reset) is playable with keyboard only, with a visible focus indicator
-- [ ] **A11Y-02**: Each cell has a screen-reader label with its position and contents (e.g. "Row 1, column 2, X")
+- [x] **A11Y-02**: Each cell has a screen-reader label with its position and contents (e.g. "Row 1, column 2, X")
 - [x] **A11Y-03**: Turn changes and game results are announced to screen readers via a single polite live region
 - [ ] **A11Y-04**: Text and UI elements meet WCAG AA contrast
 - [ ] **A11Y-05**: Respects prefers-reduced-motion — decorative motion is reduced without losing any state information
@@ -57,7 +57,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **QUAL-01**: Automated unit tests cover game rules (all win lines, draw, win-on-final-move, invalid moves)
 - [ ] **QUAL-02**: Automated tests prove Hard never loses (exhaustive or large-sample, AI-first and human-first)
-- [ ] **QUAL-03**: Component tests plus automated accessibility (axe) checks on the rendered UI
+- [x] **QUAL-03**: Component tests plus automated accessibility (axe) checks on the rendered UI
 - [x] **QUAL-04**: CI (GitHub Actions) runs lint, typecheck, and tests on every push
 - [ ] **QUAL-05**: README covers what it is, how to run, how to test, design notes, and a screenshot
 
@@ -96,7 +96,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | GAME-03 | Phase 1 | Complete |
 | GAME-04 | Phase 1 | Complete |
 | GAME-05 | Phase 1 | Complete |
-| GAME-06 | Phase 1 | Pending |
+| GAME-06 | Phase 1 | Complete |
 | GAME-07 | Phase 1 | Complete |
 | MODE-01 | Phase 2 | Pending |
 | MODE-02 | Phase 2 | Pending |
@@ -115,13 +115,13 @@ Which phases cover which requirements. Updated during roadmap creation.
 | UI-02 | Phase 4 | Pending |
 | UI-03 | Phase 4 | Pending |
 | A11Y-01 | Phase 5 | Pending |
-| A11Y-02 | Phase 1 | Pending |
+| A11Y-02 | Phase 1 | Complete |
 | A11Y-03 | Phase 1 | Complete |
 | A11Y-04 | Phase 4 | Pending |
 | A11Y-05 | Phase 4 | Pending |
 | QUAL-01 | Phase 1 | Complete |
 | QUAL-02 | Phase 2 | Pending |
-| QUAL-03 | Phase 1 | Pending |
+| QUAL-03 | Phase 1 | Complete |
 | QUAL-04 | Phase 1 | Complete |
 | QUAL-05 | Phase 5 | Pending |
 
