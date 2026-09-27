@@ -1,0 +1,24 @@
+:root {
+  --color-text: #1a1a1a;
+  --color-surface: #ffffff;
+  --color-border: #1a1a1a;
+  --color-focus: #1a4fd6;
+  --cell-size: 6rem;
+  --board-gap: 0.5rem;
+
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
