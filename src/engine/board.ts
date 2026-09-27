@@ -1,4 +1,5 @@
 import type { Board, Cell, Mark } from './types';
+import { evaluate } from './rules';
 
 export const BOARD_SIZE = 9;
 
@@ -25,7 +26,8 @@ export function isLegalMove(board: Board, index: number): boolean {
     Number.isInteger(index) &&
     index >= 0 &&
     index < BOARD_SIZE &&
-    board[index] === null
+    board[index] === null &&
+    evaluate(board).status === 'in-progress'
   );
 }
 
