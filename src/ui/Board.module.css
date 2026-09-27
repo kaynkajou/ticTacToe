@@ -46,3 +46,53 @@
 .strike[data-line='row-3'] {
   top: calc(var(--c3) - var(--strike-thickness) / 2);
 }
+
+.strike[data-line='col-1'],
+.strike[data-line='col-2'],
+.strike[data-line='col-3'] {
+  top: calc(var(--cell-size) * 0.1);
+  bottom: calc(var(--cell-size) * 0.1);
+  width: var(--strike-thickness);
+}
+
+.strike[data-line='col-1'] {
+  left: calc(var(--c1) - var(--strike-thickness) / 2);
+}
+
+.strike[data-line='col-2'] {
+  left: calc(var(--c2) - var(--strike-thickness) / 2);
+}
+
+.strike[data-line='col-3'] {
+  left: calc(var(--c3) - var(--strike-thickness) / 2);
+}
+
+.strike[data-line='diag-down'],
+.strike[data-line='diag-up'] {
+  top: 50%;
+  left: 50%;
+  height: var(--strike-thickness);
+  width: calc(var(--board-size) * 1.3);
+}
+
+.strike[data-line='diag-down'] {
+  /* Top-left to bottom-right, cells 0, 4, 8. */
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.strike[data-line='diag-up'] {
+  /* Top-right to bottom-left, cells 2, 4, 6. */
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/*
+ * D-02: the OS forced-colors palette strips background colors by default.
+ * forced-color-adjust: none opts the decorative strike out of that, and
+ * CanvasText (a system color keyword) keeps it visible against Canvas.
+ */
+@media (forced-colors: active) {
+  .strike {
+    forced-color-adjust: none;
+    background: CanvasText;
+  }
+}

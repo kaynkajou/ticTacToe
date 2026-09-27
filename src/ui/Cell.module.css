@@ -16,3 +16,16 @@
 .cell[aria-disabled='true'] {
   cursor: default;
 }
+
+/*
+ * D-02 fallback cue: the strike line (Board.module.css) is the primary
+ * non-color cue for a win. In forced-colors mode, winning cells also get
+ * this outline so the cue survives even if the strike's placement is ever
+ * obscured. outline (not box-shadow, which forced-colors mode strips).
+ */
+@media (forced-colors: active) {
+  .cell[data-winning='true'] {
+    outline: 0.25rem solid Highlight;
+    outline-offset: -0.5rem;
+  }
+}
