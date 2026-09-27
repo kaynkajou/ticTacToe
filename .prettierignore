@@ -1,0 +1,6 @@
+.planning/
+.claude/
+.gsd/
+dist/
+coverage/
+package-lock.json

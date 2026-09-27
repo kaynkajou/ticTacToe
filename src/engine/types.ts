@@ -4,5 +4,9 @@ export type Board = readonly Cell[]; // always length 9, index = row * 3 + col (
 export type WinLine = readonly [number, number, number];
 export type Result =
   | { readonly status: 'in-progress' }
-  | { readonly status: 'win'; readonly winner: Mark; readonly winningLine: WinLine }
+  | {
+      readonly status: 'win';
+      readonly winner: Mark;
+      readonly winningLine: WinLine;
+    }
   | { readonly status: 'draw' };

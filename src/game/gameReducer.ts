@@ -16,7 +16,9 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
       if (!isLegalMove(state.board, action.index)) {
         return state;
       }
-      return { board: applyMove(state.board, action.index, currentPlayer(state.board)) };
+      return {
+        board: applyMove(state.board, action.index, currentPlayer(state.board)),
+      };
     }
     default:
       return state;

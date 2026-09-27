@@ -50,7 +50,11 @@ describe('App (end-to-end hot-seat turn path through the real engine)', () => {
     const statusBefore = statusElement.textContent;
 
     const observer = new MutationObserver(() => undefined);
-    observer.observe(statusElement, { characterData: true, childList: true, subtree: true });
+    observer.observe(statusElement, {
+      characterData: true,
+      childList: true,
+      subtree: true,
+    });
 
     await user.click(firstCell);
     firstCell.focus();
@@ -77,7 +81,9 @@ describe('App (end-to-end hot-seat turn path through the real engine)', () => {
     for (let row = 1; row <= 3; row++) {
       for (let column = 1; column <= 3; column++) {
         const index = (row - 1) * 3 + (column - 1);
-        expect(cells[index]).toHaveAccessibleName(`Row ${row}, column ${column}, empty`);
+        expect(cells[index]).toHaveAccessibleName(
+          `Row ${row}, column ${column}, empty`,
+        );
       }
     }
 

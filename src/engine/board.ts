@@ -22,7 +22,10 @@ export function emptyBoard(): Board {
 
 export function isLegalMove(board: Board, index: number): boolean {
   return (
-    Number.isInteger(index) && index >= 0 && index < BOARD_SIZE && board[index] === null
+    Number.isInteger(index) &&
+    index >= 0 &&
+    index < BOARD_SIZE &&
+    board[index] === null
   );
 }
 

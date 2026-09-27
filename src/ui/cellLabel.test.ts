@@ -5,7 +5,9 @@ const LABEL_PATTERN = /^Row [1-3], column [1-3], (X|O|empty)(, winning)?$/;
 
 describe('cellLabel (D-04 accessible-label builder)', () => {
   it('produces 9 distinct labels, all matching the D-04 pattern', () => {
-    const labels = Array.from({ length: 9 }, (_, index) => cellLabel(index, null));
+    const labels = Array.from({ length: 9 }, (_, index) =>
+      cellLabel(index, null),
+    );
     expect(new Set(labels).size).toBe(9);
     for (const label of labels) {
       expect(label).toMatch(LABEL_PATTERN);

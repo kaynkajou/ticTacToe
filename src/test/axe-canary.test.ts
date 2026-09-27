@@ -29,9 +29,11 @@ describe('axe canary (proves the matcher can pass and fail under Vitest 5)', () 
     mountedNode = img;
 
     const results = await run(img);
-    expect(results.violations.some((violation) => violation.id.includes('image-alt'))).toBe(
-      true,
-    );
+    expect(
+      results.violations.some((violation) =>
+        violation.id.includes('image-alt'),
+      ),
+    ).toBe(true);
     expect(results).not.toHaveNoViolations();
   });
 });

@@ -8,12 +8,18 @@ describe('buildStatusMessage (D-03, the single status-message builder)', () => {
   });
 
   it('builds the win messages', () => {
-    expect(buildStatusMessage({ status: 'win', winner: 'X', winningLine: [0, 1, 2] }, 'X')).toBe(
-      'X wins!',
-    );
-    expect(buildStatusMessage({ status: 'win', winner: 'O', winningLine: [0, 1, 2] }, 'O')).toBe(
-      'O wins!',
-    );
+    expect(
+      buildStatusMessage(
+        { status: 'win', winner: 'X', winningLine: [0, 1, 2] },
+        'X',
+      ),
+    ).toBe('X wins!');
+    expect(
+      buildStatusMessage(
+        { status: 'win', winner: 'O', winningLine: [0, 1, 2] },
+        'O',
+      ),
+    ).toBe('O wins!');
   });
 
   it('builds the draw message using the ASCII apostrophe (U+0027)', () => {
